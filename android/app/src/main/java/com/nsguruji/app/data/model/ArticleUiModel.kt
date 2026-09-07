@@ -25,9 +25,11 @@ data class ArticleUiModel(
 fun Post.toUiModel(): ArticleUiModel {
     val cleanTitle = HtmlUtils.decodeHtmlEntities(title.rendered)
     val cleanExcerpt = HtmlUtils.extractPlainText(excerpt?.rendered ?: "")
-    val featuredImg = embedded?.featuredMedia?.firstOrNull()?.sourceUrl
+    val featuredImg = jetpackFeaturedMediaUrl?.takeIf { it.isNotBlank() }
+        ?: embedded?.featuredMedia?.firstOrNull()?.sourceUrl
+        ?: HtmlUtils.extractFirstImageUrl(content.rendered)
     val author = embedded?.authors?.firstOrNull()?.name ?: "NS Guruji"
-    val category = embedded?.terms?.firstOrNull()?.firstOrNull()?.name ?: "सामान्य"
+    val category = embedded?.terms?.firstOrNull()?.firstOrNull()?.name ?: "ताज़ा समाचार"
 
     return ArticleUiModel(
         id = id,

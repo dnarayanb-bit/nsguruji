@@ -27,4 +27,13 @@ object HtmlUtils {
         val decoded = decodeHtmlEntities(withoutTags)
         return decoded.replace(Regex("\\s+"), " ").trim()
     }
+
+    /**
+     * Extracts the first image URL from HTML content if present.
+     */
+    fun extractFirstImageUrl(htmlContent: String?): String? {
+        if (htmlContent.isNullOrBlank()) return null
+        val imgRegex = Regex("""<img[^>]+src=["']([^"']+)["']""", RegexOption.IGNORE_CASE)
+        return imgRegex.find(htmlContent)?.groupValues?.getOrNull(1)
+    }
 }

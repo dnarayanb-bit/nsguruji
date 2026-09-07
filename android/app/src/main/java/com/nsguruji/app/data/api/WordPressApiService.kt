@@ -13,7 +13,7 @@ import retrofit2.http.Query
 interface WordPressApiService {
 
     companion object {
-        const val STANDARD_USER_AGENT = "Mozilla/5.0 (Linux; Android 14; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Mobile Safari/537.36 NSGuruji-App/1.0"
+        const val STANDARD_USER_AGENT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Mobile Safari/537.36"
     }
 
     /**
@@ -21,7 +21,10 @@ interface WordPressApiService {
      */
     @Headers(
         "User-Agent: $STANDARD_USER_AGENT",
-        "Accept: application/json, text/plain, */*"
+        "Accept: application/json, text/plain, */*",
+        "Referer: https://nsguruji.com/",
+        "Origin: https://nsguruji.com",
+        "Accept-Language: hi,en-IN;q=0.9,en;q=0.8"
     )
     @GET("wp-json/wp/v2/posts")
     suspend fun getPosts(
@@ -31,7 +34,7 @@ interface WordPressApiService {
         @Query("categories") categories: Long? = null,
         @Query("order") order: String = "desc",
         @Query("orderby") orderby: String = "date",
-        @Query("_embed") embed: Boolean = true
+        @Query("_embed") embed: Boolean? = true
     ): List<Post>
 
     /**
@@ -39,12 +42,15 @@ interface WordPressApiService {
      */
     @Headers(
         "User-Agent: $STANDARD_USER_AGENT",
-        "Accept: application/json, text/plain, */*"
+        "Accept: application/json, text/plain, */*",
+        "Referer: https://nsguruji.com/",
+        "Origin: https://nsguruji.com",
+        "Accept-Language: hi,en-IN;q=0.9,en;q=0.8"
     )
     @GET("wp-json/wp/v2/posts/{id}")
     suspend fun getPostById(
         @Path("id") id: Long,
-        @Query("_embed") embed: Boolean = true
+        @Query("_embed") embed: Boolean? = true
     ): Post
 
     /**
@@ -52,7 +58,10 @@ interface WordPressApiService {
      */
     @Headers(
         "User-Agent: $STANDARD_USER_AGENT",
-        "Accept: application/json, text/plain, */*"
+        "Accept: application/json, text/plain, */*",
+        "Referer: https://nsguruji.com/",
+        "Origin: https://nsguruji.com",
+        "Accept-Language: hi,en-IN;q=0.9,en;q=0.8"
     )
     @GET("wp-json/wp/v2/categories")
     suspend fun getCategories(

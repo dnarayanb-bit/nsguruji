@@ -39,6 +39,9 @@ data class Post(
     @SerializedName("categories")
     val categoryIds: List<Long>? = null,
 
+    @SerializedName("jetpack_featured_media_url")
+    val jetpackFeaturedMediaUrl: String? = null,
+
     @SerializedName("_embedded")
     val embedded: EmbeddedData? = null
 )

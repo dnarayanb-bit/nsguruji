@@ -63,7 +63,7 @@ class HomeViewModel(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = error.localizedMessage ?: "इंटरनेट कनेक्शन उपलब्ध नहीं है"
+                        errorMessage = formatErrorMessage(error)
                     )
                 }
             }
@@ -102,10 +102,19 @@ class HomeViewModel(
                 _uiState.update {
                     it.copy(
                         isLoading = false,
-                        errorMessage = error.localizedMessage ?: "इंटरनेट कनेक्शन उपलब्ध नहीं है"
+                        errorMessage = formatErrorMessage(error)
                     )
                 }
             }
+        }
+    }
+
+    private fun formatErrorMessage(error: Throwable): String {
+        val msg = error.localizedMessage ?: ""
+        return when {
+            msg.contains("403", ignoreCase = true) -> "सर्वर से संपर्क करने में समस्या आई। पुनः प्रयास करें।"
+            msg.contains("Unable to resolve host", ignoreCase = true) || msg.contains("timeout", ignoreCase = true) -> "इंटरनेट कनेक्शन उपलब्ध नहीं है। कृपया अपना नेटवर्क जांचें।"
+            else -> msg.ifBlank { "डेटा लोड करने में समस्या आई। पुनः प्रयास करें।" }
         }
     }
 
@@ -138,7 +147,7 @@ class HomeViewModel(
                 _uiState.update {
                     it.copy(
                         isRefreshing = false,
-                        errorMessage = if (it.posts.isEmpty()) error.localizedMessage else null
+                        errorMessage = if (it.posts.isEmpty()) formatErrorMessage(error) else null
                     )
                 }
             }

@@ -35,11 +35,26 @@ object RetrofitClient {
             .readTimeout(25, TimeUnit.SECONDS)
             .writeTimeout(25, TimeUnit.SECONDS)
             .addInterceptor { chain ->
-                val request = chain.request().newBuilder()
-                    .header("User-Agent", WordPressApiService.STANDARD_USER_AGENT)
-                    .header("Accept", "application/json, text/plain, */*")
-                    .build()
-                chain.proceed(request)
+                val original = chain.request()
+                val requestBuilder = original.newBuilder()
+
+                if (original.header("User-Agent") == null) {
+                    requestBuilder.header("User-Agent", WordPressApiService.STANDARD_USER_AGENT)
+                }
+                if (original.header("Accept") == null) {
+                    requestBuilder.header("Accept", "application/json, text/plain, */*")
+                }
+                if (original.header("Referer") == null) {
+                    requestBuilder.header("Referer", "https://nsguruji.com/")
+                }
+                if (original.header("Origin") == null) {
+                    requestBuilder.header("Origin", "https://nsguruji.com")
+                }
+                if (original.header("Accept-Language") == null) {
+                    requestBuilder.header("Accept-Language", "hi,en-IN;q=0.9,en;q=0.8")
+                }
+
+                chain.proceed(requestBuilder.build())
             }
             .addInterceptor(loggingInterceptor)
             .build()
