@@ -17,7 +17,8 @@ object RssParser {
     suspend fun fetchRssFeed(): List<ArticleUiModel> {
         val request = Request.Builder()
             .url(RSS_URL)
-            .header("User-Agent", "NSGuruji-Android-App/1.0")
+            .header("User-Agent", WordPressApiService.STANDARD_USER_AGENT)
+            .header("Accept", "application/rss+xml, application/xml, text/xml, */*")
             .build()
 
         val response = RetrofitClient.rawHttpClient.newCall(request).execute()

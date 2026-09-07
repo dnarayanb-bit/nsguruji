@@ -36,8 +36,8 @@ object RetrofitClient {
             .writeTimeout(25, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .header("User-Agent", "NSGuruji-Android-App/1.0")
-                    .header("Accept", "application/json")
+                    .header("User-Agent", WordPressApiService.STANDARD_USER_AGENT)
+                    .header("Accept", "application/json, text/plain, */*")
                     .build()
                 chain.proceed(request)
             }
