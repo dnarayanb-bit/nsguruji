@@ -20,14 +20,23 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - name: Ensure Gradle Wrapper JAR exists
+        working-directory: android
+        run: |
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ]; then
+            echo "gradle-wrapper.jar missing, downloading Gradle 8.7 wrapper..."
+            mkdir -p gradle/wrapper
+            curl -sSL "https://raw.githubusercontent.com/gradle/gradle/v8.7.0/gradle/wrapper/gradle-wrapper.jar" -o gradle/wrapper/gradle-wrapper.jar
+          fi
+
       - name: Build APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: nsguruji-apk
-          path: android/app/build/outputs/apk/release/*.apk
+          path: android/app/build/outputs/apk/**/*.apk

@@ -2,5 +2,7 @@
   "name": "NS Guruji",
   "description": "Production-ready native Android news application for NS Guruji (nsguruji.com) built with Kotlin, Jetpack Compose, Material 3, MVVM, Retrofit, and AdMob integration.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

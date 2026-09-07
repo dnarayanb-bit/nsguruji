@@ -19,9 +19,9 @@ interface WordPressApiService {
         @Query("page") page: Int = 1,
         @Query("per_page") perPage: Int = 20,
         @Query("search") searchQuery: String? = null,
-        @Query("categories") categoryId: Long? = null,
+        @Query("categories") categories: Long? = null,
         @Query("order") order: String = "desc",
-        @Query("orderby") orderBy: String = "date",
+        @Query("orderby") orderby: String = "date",
         @Query("_embed") embed: Boolean = true
     ): List<Post>
 
@@ -40,7 +40,7 @@ interface WordPressApiService {
     @GET("wp-json/wp/v2/categories")
     suspend fun getCategories(
         @Query("per_page") perPage: Int = 50,
-        @Query("orderby") orderBy: String = "count",
+        @Query("orderby") orderby: String = "count",
         @Query("order") order: String = "desc"
     ): List<Category>
 }
