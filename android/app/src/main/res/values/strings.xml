@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NS Guruji</string>
+    <string name="website_url">https://nsguruji.com</string>
+
+    <!-- Navigation & Titles -->
+    <string name="title_home">NS Guruji</string>
+    <string name="title_search">खोजें</string>
+    <string name="title_article_detail">खबर विवरण</string>
+    <string name="category_all">सभी</string>
+
+    <!-- Sections -->
+    <string name="section_featured">प्रमुख समाचार</string>
+    <string name="section_latest">ताज़ा खबरें</string>
+
+    <!-- Search -->
+    <string name="search_hint">खबरें, सरकारी नौकरियां, रिजल्ट खोजें...</string>
+    <string name="search_empty_title">कोई परिणाम नहीं मिला</string>
+    <string name="search_empty_desc">कृपया कोई अन्य शब्द या विषय लिखकर खोजें।</string>
+
+    <!-- Error & Network -->
+    <string name="no_internet_title">इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
+    <string name="no_internet_desc">कृपया अपना डेटा या वाई-फाई कनेक्शन जांचें और पुनः प्रयास करें।</string>
+    <string name="btn_retry">पुनः प्रयास करें</string>
+    <string name="empty_articles">फिलहाल कोई खबर उपलब्ध नहीं है</string>
+
+    <!-- Article Detail -->
+    <string name="btn_share">शेयर करें</string>
+    <string name="btn_open_browser">ब्राउज़र में खोलें</string>
+    <string name="share_article_template">यह खबर NS Guruji पर पढ़ें:\n%1$s\n%2$s</string>
+    <string name="share_sheet_title">खबर शेयर करें</string>
+    <string name="author_default">NS Guruji Team</string>
+    <string name="category_general">सामान्य</string>
+
+    <!-- Ad placeholder -->
+    <string name="ad_label">विज्ञापन</string>
+</resources>
