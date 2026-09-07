@@ -325,6 +325,12 @@ export const androidSourceFiles: AndroidSourceFile[] = [
     "content": "distributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.7-bin.zip\nnetworkTimeout=10000\nvalidateDistributionUrl=true\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n"
   },
   {
+    "path": "gradle/wrapper/gradle-wrapper.jar",
+    "name": "gradle-wrapper.jar",
+    "language": "binary",
+    "content": "[Binary JAR Archive: Gradle Wrapper 8.7.0]\nSize: 43,453 bytes\nIncluded in project root and in downloadable ZIP archive.\nContains org.gradle.wrapper.GradleWrapperMain executable entrypoint.\n"
+  },
+  {
     "path": "gradle.properties",
     "name": "gradle.properties",
     "language": "properties",
